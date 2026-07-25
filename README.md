@@ -1,32 +1,48 @@
-# React + TypeScript + Vite
+# Masters resultattavle
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+En resultattavle i Masters-stil for en brettspillturnering med to spillere. Logg
+kamper og se ledertavle og spill-for-spill-oversikt på storskjerm.
 
-Currently, two official plugins are available:
+**Live:** https://maciejost.github.io/tournament-scoreboard/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funksjoner
 
-## React Compiler
+- Redigerbare spillernavn
+- Legg til, gi nytt navn på og slett brettspill
+- Rask resultatregistrering (velg spill og vinner)
+- Historikk med redigering og sletting
+- Ledertavle med seiere, tap, seiersprosent og leder
+- Spill-for-spill-oversikt
+- Fullskjermmodus som skjuler faner og statuslinje
+- Alt lagres i nettleseren (localStorage) – ingen backend
+- Presentasjonsvisning i full skjermhøyde, optimalisert for TV
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Kjør lokalt
 
-## Expanding the Oxlint configuration
+Krever Node.js 20.19+ eller 22.12+.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Åpne deretter http://localhost:5173.
+
+## Nyttige kommandoer
+
+```bash
+npm run build     # produksjonsbygg til dist/
+npm run preview   # forhåndsvis produksjonsbygget
+npm run lint      # kjør oxlint
+```
+
+## Deploy
+
+Nettstedet publiseres automatisk til GitHub Pages ved hver push til `main`, via
+workflowen i `.github/workflows/deploy.yml`. Vite bruker
+`base: '/tournament-scoreboard/'` for produksjonsbygg, slik at ressurser lastes
+riktig under prosjekt-URL-en.
+
+## Teknologi
+
+React 19 · TypeScript · Vite · Tailwind CSS v4
