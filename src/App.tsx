@@ -10,8 +10,10 @@ import { GameManager } from './components/GameManager'
 import { MatchLogger } from './components/MatchLogger'
 import { MatchHistory } from './components/MatchHistory'
 import { SettingsCard } from './components/SettingsCard'
+import { BackupCard } from './components/BackupCard'
 import { FullscreenButton } from './components/FullscreenButton'
 import { FlagIcon } from './components/icons'
+import type { BackupData } from './lib/backup'
 
 const DEFAULT_PLAYERS: Players = { p1: 'Spiller 1', p2: 'Spiller 2' }
 const DEFAULT_TOURNAMENT = 'The Masters'
@@ -67,6 +69,13 @@ function App() {
     setGames(createDefaultGames())
     setMatches([])
     setTournamentName(DEFAULT_TOURNAMENT)
+  }
+
+  function restoreBackup(data: BackupData) {
+    setPlayers(data.players)
+    setGames(data.games)
+    setMatches(data.matches)
+    setTournamentName(data.tournamentName)
   }
 
   return (
@@ -128,6 +137,13 @@ function App() {
                 onRename={setTournamentName}
                 onClearHistory={() => setMatches([])}
                 onResetAll={resetAll}
+              />
+              <BackupCard
+                players={players}
+                games={games}
+                matches={matches}
+                tournamentName={tournamentName}
+                onRestore={restoreBackup}
               />
             </div>
             <div className="space-y-6">
