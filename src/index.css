@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Masters-style tournament theme tokens
+   ============================================================ */
+@theme {
+  --color-board: #00563b;
+  --color-board-deep: #013226;
+  --color-panel: #064a34;
+  --color-panel-2: #053f2d;
+  --color-rail: #0a5b41;
+  --color-gold: #c6a44e;
+  --color-gold-bright: #e6c86a;
+  --color-accent: #ffd100;
+  --color-cream: #f6f2e6;
+  --color-muted: #a9c6ba;
+
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Barlow Semi Condensed", system-ui, -apple-system, sans-serif;
+  --font-num: "Barlow Condensed", "Barlow Semi Condensed", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-board);
+    background-image: radial-gradient(
+      130% 90% at 50% -15%,
+      #0a6a49 0%,
+      var(--color-board) 42%,
+      var(--color-board-deep) 100%
+    );
+    background-attachment: fixed;
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    margin: 0;
+  }
+
+  input,
+  select,
+  button {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  /* aligned scoreboard digits */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  .text-shadow-board {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  }
+  /* subtle vertical sheen used on leaderboard panels */
+  .board-grain {
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(0, 0, 0, 0.08)
+    );
+  }
+}
